@@ -1,27 +1,13 @@
 import React from 'react';
 
-const pgpKey = `-----BEGIN PGP PUBLIC KEY BLOCK-----
-Version: OpenPGP
+const PRIVACY_PATH = '/app/pgp-andy/privacy-policy';
 
-Replace this block with your actual public key.
-
------END PGP PUBLIC KEY BLOCK-----`;
-
-export default function App() {
-  const effectiveDate = 'March 9, 2026';
-
+function HomePage() {
   return (
     <div className="page">
       <header className="header">
-        <nav aria-label="Breadcrumb" className="breadcrumb">
-          <a href="#" aria-current="false">Apps</a>
-          <span aria-hidden="true">&gt;</span>
-          <a href="#" aria-current="false">PGP Andy</a>
-          <span aria-hidden="true">&gt;</span>
-          <span aria-current="page">Privacy Policy</span>
-        </nav>
         <h1>Home</h1>
-        <p className="subtitle">Contact information and public PGP key</p>
+        <p className="subtitle">Contact information</p>
       </header>
 
       <main className="content">
@@ -32,13 +18,38 @@ export default function App() {
           <p>Website: https://emery.pro</p>
         </section>
 
-        <section className="card" aria-labelledby="pgp-heading">
-          <h2 id="pgp-heading">Public PGP Key</h2>
-          <pre>{pgpKey}</pre>
+        <section className="card" aria-labelledby="policy-link-heading">
+          <h2 id="policy-link-heading">Legal</h2>
+          <p>
+            <a href={PRIVACY_PATH}>View Privacy Policy</a>
+          </p>
         </section>
+      </main>
+    </div>
+  );
+}
 
+function PrivacyPolicyPage() {
+  const effectiveDate = 'March 9, 2026';
+
+  return (
+    <div className="page">
+      <header className="header">
+        <nav aria-label="Breadcrumb" className="breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">&gt;</span>
+          <span>Apps</span>
+          <span aria-hidden="true">&gt;</span>
+          <span>PGP Andy</span>
+          <span aria-hidden="true">&gt;</span>
+          <span aria-current="page">Privacy Policy</span>
+        </nav>
+        <h1>Privacy Policy</h1>
+      </header>
+
+      <main className="content">
         <section className="card" aria-labelledby="privacy-policy-heading">
-          <h2 id="privacy-policy-heading">Privacy Policy</h2>
+          <h2 id="privacy-policy-heading">PGP Andy Privacy Policy</h2>
           <p><strong>Effective date:</strong> {effectiveDate}</p>
           <p>
             PGP Andy is designed to run fully offline. The app does not collect,
@@ -59,4 +70,14 @@ export default function App() {
       </main>
     </div>
   );
+}
+
+export default function App() {
+  const path = window.location.pathname.replace(/\/$/, '') || '/';
+
+  if (path === PRIVACY_PATH) {
+    return <PrivacyPolicyPage />;
+  }
+
+  return <HomePage />;
 }

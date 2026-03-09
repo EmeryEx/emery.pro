@@ -1,8 +1,8 @@
 # emery.pro
 
 Simple React page with static content for:
-- Breadcrumb nav: `Apps > PGP Andy > Privacy Policy`
-- Home content: contact info and public PGP key
+- Home (`/`): contact info only
+- Privacy Policy (`/app/pgp-andy/privacy-policy`)
 
 ## Run Locally
 
@@ -34,4 +34,4 @@ Once DNS is pointed correctly, GitHub Pages will also serve it on `https://emery
 ## Edit Content
 
 - Update contact info in `src/App.jsx`
-- Replace the placeholder PGP block in `src/App.jsx` with your real public key
+- Update privacy policy text in `src/App.jsx`
