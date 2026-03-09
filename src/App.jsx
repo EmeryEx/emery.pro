@@ -167,21 +167,45 @@ function PrivacyPolicyPage() {
       <main className="content">
         <section className="card" aria-labelledby="privacy-policy-heading">
           <h2 id="privacy-policy-heading">PGP Andy Privacy Policy</h2>
-          <p><strong>Effective date:</strong> {effectiveDate}</p>
+          <p><strong>Effective Date:</strong> {effectiveDate}</p>
+          
+          <h3>1. Introduction</h3>
           <p>
-            PGP Andy is designed to run fully offline. The app does not collect,
-            store, or transmit personal data.
+            This Privacy Policy describes how PGP Andy ("the Application") handles user data and privacy. 
+            By using the Application, you acknowledge and agree to the practices described herein.
           </p>
+
+          <h3>2. Data Collection</h3>
           <p>
-            The app does not use analytics, advertising SDKs, tracking tools, or
-            third-party data processors.
+            The Application is designed to operate entirely offline on your device. The Application does not 
+            collect, store, transmit, or process any personal data or personally identifiable information (PII). 
+            All cryptographic operations are performed locally on your device.
           </p>
+
+          <h3>3. Third-Party Services</h3>
           <p>
-            Since no personal data is collected, there is no personal data to access,
-            correct, export, or delete.
+            The Application does not integrate with, utilize, or transmit data to any third-party services, 
+            including but not limited to analytics platforms, advertising networks, tracking tools, or external 
+            data processors. No user data is shared with any third parties.
           </p>
+
+          <h3>4. User Rights</h3>
           <p>
-            If you have questions about this policy, contact: everchanging10@emery.pro.
+            As the Application does not collect, store, or process any personal data, there is no personal 
+            data available for users to access, correct, export, or delete. All data generated or processed 
+            by the Application remains exclusively on your local device under your control.
+          </p>
+
+          <h3>5. Changes to This Policy</h3>
+          <p>
+            We reserve the right to modify this Privacy Policy at any time. Any changes will be effective 
+            immediately upon posting of the updated policy with a new effective date.
+          </p>
+
+          <h3>6. Contact Information</h3>
+          <p>
+            If you have any questions, concerns, or inquiries regarding this Privacy Policy, please contact us at: 
+            <strong> everchanging10@emery.pro</strong>
           </p>
         </section>
       </main>
