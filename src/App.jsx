@@ -1,3 +1,5 @@
+import React from 'react';
+
 const pgpKey = `-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: OpenPGP
 
