@@ -23,21 +23,36 @@ body {
   margin-bottom: 1.75rem;
 }
 
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+.site-nav {
   margin-bottom: 1rem;
-  font-size: 0.95rem;
 }
 
-.breadcrumb a {
+.site-nav ul {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding-left: 1rem;
+}
+
+.site-nav-root {
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.site-nav li {
+  line-height: 1.4;
+}
+
+.site-nav-heading {
+  color: #44566c;
+  font-weight: 600;
+}
+
+.site-nav a {
   color: #005b96;
   text-decoration: none;
 }
 
-.breadcrumb a:hover {
+.site-nav a:hover {
   text-decoration: underline;
 }
 

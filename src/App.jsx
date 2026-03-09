@@ -1,11 +1,75 @@
 import React from 'react';
 
-const PRIVACY_PATH = '/app/pgp-andy/privacy-policy';
+const PRIVACY_SEGMENT = '/app/pgp-andy/privacy-policy';
+
+const NAV_ITEMS = [
+  {
+    id: 'apps',
+    label: 'Apps',
+    apps: [
+      {
+        id: 'pgp-andy',
+        label: 'PGP Andy',
+        pages: [
+          {
+            id: 'privacy-policy',
+            label: 'Privacy Policy',
+            hrefFromHome: 'app/pgp-andy/privacy-policy/',
+            hrefFromNested: './'
+          }
+        ]
+      }
+    ]
+  }
+];
+
+function normalizePath(pathname) {
+  return pathname.replace(/\/+$/, '') || '/';
+}
+
+function SiteNav({ currentPage }) {
+  return (
+    <nav className="site-nav" aria-label="Site navigation">
+      <ul className="site-nav-root">
+        <li>
+          <a href={currentPage === 'home' ? './' : '../../../'} aria-current={currentPage === 'home' ? 'page' : undefined}>
+            Home
+          </a>
+        </li>
+        {NAV_ITEMS.map((group) => (
+          <li key={group.id}>
+            <span className="site-nav-heading">{group.label}</span>
+            <ul>
+              {group.apps.map((app) => (
+                <li key={app.id}>
+                  <span className="site-nav-heading">{app.label}</span>
+                  <ul>
+                    {app.pages.map((page) => {
+                      const href = currentPage === 'home' ? page.hrefFromHome : page.hrefFromNested;
+                      const isCurrent = currentPage === page.id;
+
+                      return (
+                        <li key={page.id}>
+                          <a href={href} aria-current={isCurrent ? 'page' : undefined}>{page.label}</a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
 
 function HomePage() {
   return (
     <div className="page">
       <header className="header">
+        <SiteNav currentPage="home" />
         <h1>Home</h1>
         <p className="subtitle">Contact information</p>
       </header>
@@ -16,13 +80,6 @@ function HomePage() {
           <p>Email: andy@example.com</p>
           <p>Signal: @andy.01</p>
           <p>Website: https://emery.pro</p>
-        </section>
-
-        <section className="card" aria-labelledby="policy-link-heading">
-          <h2 id="policy-link-heading">Legal</h2>
-          <p>
-            <a href={PRIVACY_PATH}>View Privacy Policy</a>
-          </p>
         </section>
       </main>
     </div>
@@ -35,15 +92,7 @@ function PrivacyPolicyPage() {
   return (
     <div className="page">
       <header className="header">
-        <nav aria-label="Breadcrumb" className="breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">&gt;</span>
-          <span>Apps</span>
-          <span aria-hidden="true">&gt;</span>
-          <span>PGP Andy</span>
-          <span aria-hidden="true">&gt;</span>
-          <span aria-current="page">Privacy Policy</span>
-        </nav>
+        <SiteNav currentPage="privacy-policy" />
         <h1>Privacy Policy</h1>
       </header>
 
@@ -73,9 +122,10 @@ function PrivacyPolicyPage() {
 }
 
 export default function App() {
-  const path = window.location.pathname.replace(/\/$/, '') || '/';
+  const path = normalizePath(window.location.pathname);
+  const isPrivacyPage = path.endsWith(PRIVACY_SEGMENT);
 
-  if (path === PRIVACY_PATH) {
+  if (isPrivacyPage) {
     return <PrivacyPolicyPage />;
   }
 

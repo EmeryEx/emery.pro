@@ -2,7 +2,9 @@
 
 Simple React page with static content for:
 - Home (`/`): contact info only
-- Privacy Policy (`/app/pgp-andy/privacy-policy`)
+- Privacy Policy (`/app/pgp-andy/privacy-policy/`)
+
+Note: for static GitHub Pages folder routes, use trailing-slash links.
 
 ## Run Locally
 
